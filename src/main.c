@@ -94,7 +94,7 @@ int main(void)
   {
     /* Test if user code is programmed starting from address "ApplicationAddress" */
 	uint32_t pippo1, pippo2;
-	pippo1 = (*(__IO uint32_t*)ApplicationAddress); 0x08000000
+	pippo1 = (*(__IO uint32_t*)ApplicationAddress); // 0x08000000   what is this value
 	pippo2 = pippo1 & 0x2FFE0000;
     if (pippo2 == 0x20000000)
     { 
