@@ -30,7 +30,7 @@
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
-pFunction Jump_To_Application;
+pFunction Jump_To_Application; //Jump_To_Application is a pointer to a function of type pFunction
 uint32_t JumpAddress;
 uint32_t BlockNbr = 0, UserMemoryMask = 0;
 __IO uint32_t FlashProtection = 0;
@@ -185,6 +185,8 @@ uint32_t GetIntegerInput(int32_t * num)
       return 1;
     }
   }
+
+  return 0;
 }
 
 /**

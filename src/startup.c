@@ -89,6 +89,14 @@ void WEAK DMA2_Channel2_IRQHandler(void);
 void WEAK DMA2_Channel3_IRQHandler(void);
 void WEAK DMA2_Channel4_5_IRQHandler(void);
 
+/*
+ * Vector table function assignments on the .isr_vectors object file section
+ * .isr_vectors will be present in the object file before linking and will be placed
+ * at the point specified by SECTIONS script in the linker file
+ * _estack such defined in the linker script:
+ * _estack = ORIGIN(RAM)+LENGTH(RAM); *end of the stack*
+ */
+
 __attribute__ ((section(".isr_vectors")))
 void (* const g_pfnVectors[])(void) = {
     (intfunc)((unsigned long)&_estack), /* The stack pointer after relocation */
@@ -200,6 +208,7 @@ void Reset_Handler(void) {
 	/* Initialize data and bss */
 	__Init_Data();
 	extern uint32_t _isr_vectors_offs;
+	/*need to update the VTOR register since vector table has relocated. */
 	SCB->VTOR = 0x08000000 | ((uint32_t)&_isr_vectors_offs & (uint32_t)0x1FFFFF80);
 	SystemInit();
 	main();

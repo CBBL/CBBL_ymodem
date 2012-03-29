@@ -31,7 +31,8 @@
 //#include "stm32_eval.h"
 
 /* Exported types ------------------------------------------------------------*/
-typedef  void (*pFunction)(void);
+typedef  void (*pFunction)(void); //defines a type named pFunction which is a pointer
+//to a function which takes no parameters and returns void
 
 /* Exported constants --------------------------------------------------------*/
 /* Constants used by Serial Command Line Mode */
